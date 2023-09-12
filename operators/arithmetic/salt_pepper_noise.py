@@ -26,7 +26,7 @@ def torch_example(image, p=0.03):
     """
     args:
         image: torch.Tensor
-        p: 将像素替换为椒盐噪声的概率。 取值范围(0.0, 0.03)
+        p: 将像素替换为椒盐噪声的概率, 取值范围(0.0, 0.03)
     """
 
     _, imh, imw = image.shape

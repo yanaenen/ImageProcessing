@@ -9,7 +9,10 @@ import cv2
 import torch
 import matplotlib.pyplot as plt
 
-from arithmetirc.salt_pepper_noise import imgaug_example, torch_example
+import operators
+
+operator_name = 'horizontal_flip'
+operator = getattr(operators, operator_name)
 
 if __name__ == '__main__':
     img_path = '../data/dog-cat.jpg'
@@ -20,8 +23,8 @@ if __name__ == '__main__':
     torch_img = torch.from_numpy(img).to(device)
     torch_img = torch_img.permute((2, 0, 1)).float()
 
-    imgaug_out = imgaug_example(img)
-    torch_out = torch_example(torch_img)
+    imgaug_out = operator.imgaug_example(img)
+    torch_out = operator.torch_example(torch_img)
 
     torch_out = torch_out.permute((1, 2, 0)).cpu().numpy().astype('uint8')
 
